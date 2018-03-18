@@ -1,0 +1,163 @@
+.productBlock {
+  float: left;
+  margin: 11px;
+  padding: 10px;
+  border: 1px solid #f0f0f0;
+  text-align: center;
+  box-shadow: 5px 5px #f4f4f4;
+}
+
+.productInsideData {
+  padding: 10px;
+}
+
+.width100 {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.image {
+  overflow: hidden;
+  border: 1px dashed #c5c5c5;
+  height: 150px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.input {
+  font-size: 15px;
+  color: #235a23;
+  width: 163px;
+  border: 1px dashed #0ab0ff;
+  height: 35px;
+  outline-color: red;
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 17px;
+  color: #871414;
+}
+
+.fileData{
+  text-align: center;
+}
+
+.inputFilter {
+  width: 350px;
+  height: 50px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.clearData {
+  font-size: 20px;
+  margin-left: -44px;
+  border-left: 1px solid #cfcfcf;
+  padding-bottom: 13px;
+  padding-top: 13px;
+  padding-left: 15px;
+  color: #ac5f5f;
+  margin-top: -20px;
+  font-weight: 600;
+}
+
+.currency {
+  display: block;
+}
+.dontCount {
+  display: none;
+}
+.dontCountBorder {
+  border: 1px solid #ff0000;
+}
+
+.TotalAmoutBlock {
+  color: #a45b5b;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.totalUAH, .totalUSD21, .totalUAH25, .totalUSD, .USDUAH {
+  display: inline;
+}
+
+.currencyExchange {
+  width: 41px;
+  height: 18px;
+  font-size: 1em;
+  color: #33537f;
+  padding-left: 5px;
+  outline: none;
+  border: none;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+}
+
+.inputfile:focus + label, .inputfile.has-focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em; /* 4px */
+  margin-right: 0.25em; /* 4px */
+}
+
+.inputfile:focus + label, .inputfile.has-focus + label, .inputfile + label:hover {
+  background-color: #722040;
+  color: #ffffff;
+}
+
+.buttons:hover {
+  background-color: #815868;
+  color: #ffffff;
+}
+
+.buttons {
+  font-size: 1.15rem; /* 20px */
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  color: #914848;
+  text-align: center;
+}
+
+.uploadedFileText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #5c9e5c;
+}
+.adminCheckboxes {
+  width: 100%;
+}
+.marginTop{
+  margin-top: 20px;
+}

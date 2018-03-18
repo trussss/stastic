@@ -1,0 +1,132 @@
+<div class="container marginTop">
+
+  <div class="row">
+
+    <div class="col-md-3 fileData">
+      <input type="file" id="inputFile" class="inputfile" name="file" placeholder="Upload file" (change)="getFile($event)"/>
+      <label for="inputFile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
+        <span>Choose a file&hellip;</span>
+      </label>
+      <div class="uploadedFileText">{{orderId}}</div>
+      <div class="uploadedFileText">{{orderDate}}</div>
+      <div class="uploadedFileText">{{totalGoods}}</div>
+      <div class="uploadedFileText">{{notCounted}}</div>
+      <a target="_blank" class="adminMode uploadedFileText" id="downloadFile"></a>
+
+      <div class="buttons" (click)="showOnlyFilled()">Show all filed data!</div>
+    </div>
+
+    <div id="filter" class="col-md-4">
+
+      <div class="row">
+        <input type="text" class="inputFilter" placeholder="Filter" (keyup)="filterData($event)"/>
+        <span class="clearData" (click)="filterData('clear')">X</span>
+      </div>
+
+      <div class="row ">
+        <div class="buttons col-md-6" (click)="resetData()">Reset data on page</div>
+      </div>
+
+      <div class="row">
+        <div class="buttons col-md-6" (click)="changeAdminMode()">Admin mode</div>
+      </div>
+
+      <div class="row">
+        <div class="buttons col-md-6" *ngIf="adminMode" (click)="saveToDB()">Save exeption items</div>
+     </div>
+
+    </div>
+
+    <div class="col-md-4 TotalAmoutBlock">
+
+      <table class="table">
+        <th>({{currensyType.uah}})</th>
+        <th>23%</th>
+        <th>({{currensyType.usd}})</th>
+        <th>23%</th>
+        <tr>
+          <td>{{totalAmountData.notCountedTotalUAH}}</td>
+          <td>{{totalAmountData.notCountedTotalUAH20}}</td>
+          <td>{{totalAmountData.notCountedTotalUSD}}</td>
+          <td>{{totalAmountData.notCountedTotalUSD20}}</td>
+          <td>Paid</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>{{totalAmountData.totalUAH}}</td>
+          <td>{{totalAmountData.totalUAH25}}</td>
+          <td>{{totalAmountData.totalUSD}}</td>
+          <td>{{totalAmountData.totalUSD21}}</td>
+          <td>Not paid</td>
+        </tr>
+        <tr>
+          <th>{{currensyType.uah}}</th>
+          <th>25%</th>
+          <th>{{currensyType.usd}}</th>
+          <th>21%</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>{{totalAmountData.totalUAH + totalAmountData.notCountedTotalUAH}}</td>
+          <td>{{(totalAmountData.totalUAH25 + totalAmountData.notCountedTotalUAH20)}}</td>
+          <td>{{totalAmountData.totalUSD + totalAmountData.notCountedTotalUSD}}</td>
+          <td>{{((totalAmountData.totalUSD21 + totalAmountData.notCountedTotalUSD20)).toFixed(2)}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Total {{currensyType.uah}}</th>
+          <th>Total</th>
+          <th>Total {{currensyType.usd}}</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </table>
+      <div><span>Currency <input type="text" class="currencyExchange" (keyup)="changeCurrency($event)"/> UAH/USD = <div class="USDUAH">{{totalAmountData.USDUAH}}</div></span></div>
+    </div>
+
+  </div>
+
+</div>
+
+<div>
+  <span *ngFor="let item of baseList" id='productBlock' class='productBlock {{item.dontCount ? "dontCountBorder": ""}}'>
+    <div class='image' id='image' >
+      <!--<img class='width100' [src]="makeSafeUrl(item.image)">-->
+    </div>
+    <div class='productInsideData sku' id='{{item.sku}}'>
+      {{item.sku}}
+    </div>
+    <div class='productInsideData price' >{{item.price}}</div>
+    <div class='currency'>{{item.currency}} </div>
+    <div class='dontCount'>{{item.dontCount}} </div>
+    <input
+      type="number"
+      id="count"
+      (keyup)="changelAmount($event, item.sku, item.currency);"
+      value="{{item.amount}}"
+      class="input"
+    />
+    <input
+      *ngIf="adminMode"
+      type="checkbox"
+      id="_{{item.sku}}"
+      (change)="onCheckCheckBox(event.target)"
+      class="adminCheckboxes input"
+    />
+  </span>
+
+</div>
